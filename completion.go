@@ -25,6 +25,7 @@ var (
 // GPT3 Models are designed for text-based tasks. For code-specific
 // tasks, please refer to the Codex series of models.
 const (
+	O3Mini                = "o3-mini"
 	O1Mini                = "o1-mini"
 	O1Mini20240912        = "o1-mini-2024-09-12"
 	O1Preview             = "o1-preview"
@@ -99,16 +100,20 @@ const (
 // O1SeriesModels List of new Series of OpenAI models.
 // Some old api attributes not supported.
 var O1SeriesModels = map[string]struct{}{
+	O3Mini:            {},
 	O1Mini:            {},
 	O1Mini20240912:    {},
+	O1:                {},
 	O1Preview:         {},
 	O1Preview20240912: {},
 }
 
 var disabledModelsForEndpoints = map[string]map[string]bool{
 	"/completions": {
+		O3Mini:               true,
 		O1Mini:               true,
 		O1Mini20240912:       true,
+		O1:                   true,
 		O1Preview:            true,
 		O1Preview20240912:    true,
 		GPT3Dot5Turbo:        true,
