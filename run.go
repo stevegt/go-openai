@@ -83,12 +83,13 @@ const (
 )
 
 type RunRequest struct {
-	AssistantID            string         `json:"assistant_id"`
-	Model                  string         `json:"model,omitempty"`
-	Instructions           string         `json:"instructions,omitempty"`
-	AdditionalInstructions string         `json:"additional_instructions,omitempty"`
-	Tools                  []Tool         `json:"tools,omitempty"`
-	Metadata               map[string]any `json:"metadata,omitempty"`
+	AssistantID            string          `json:"assistant_id"`
+	Model                  string          `json:"model,omitempty"`
+	Instructions           string          `json:"instructions,omitempty"`
+	AdditionalInstructions string          `json:"additional_instructions,omitempty"`
+	AdditionalMessages     []ThreadMessage `json:"additional_messages,omitempty"`
+	Tools                  []Tool          `json:"tools,omitempty"`
+	Metadata               map[string]any  `json:"metadata,omitempty"`
 
 	// Sampling temperature between 0 and 2. Higher values like 0.8 are  more random.
 	// lower values are more focused and deterministic.
@@ -110,6 +111,8 @@ type RunRequest struct {
 	ToolChoice any `json:"tool_choice,omitempty"`
 	// This can be either a string or a ResponseFormat object.
 	ResponseFormat any `json:"response_format,omitempty"`
+	// Disable the default behavior of parallel tool calls by setting it: false.
+	ParallelToolCalls any `json:"parallel_tool_calls,omitempty"`
 }
 
 // ThreadTruncationStrategy defines the truncation strategy to use for the thread.
